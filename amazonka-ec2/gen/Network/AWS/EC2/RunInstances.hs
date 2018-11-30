@@ -59,7 +59,9 @@ module Network.AWS.EC2.RunInstances
     , risSecurityGroupIds
     , risSecurityGroups
     , risClientToken
+    , risElasticInferenceAccelerators
     , risInstanceMarketOptions
+    , risLicenseSpecifications
     , risDisableAPITermination
     , risKeyName
     , risNetworkInterfaces
@@ -68,11 +70,13 @@ module Network.AWS.EC2.RunInstances
     , risSubnetId
     , risKernelId
     , risInstanceType
+    , risCapacityReservationSpecification
     , risEBSOptimized
     , risUserData
     , risMonitoring
     , risTagSpecifications
     , risIPv6AddressCount
+    , risHibernationOptions
     , risIAMInstanceProfile
     , risElasticGpuSpecification
     , risImageId
@@ -105,17 +109,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for RunInstances.
---
---
---
--- /See:/ 'runInstances' smart constructor.
+-- | /See:/ 'runInstances' smart constructor.
 data RunInstances = RunInstances'
   { _risAdditionalInfo :: !(Maybe Text)
   , _risSecurityGroupIds :: !(Maybe [Text])
   , _risSecurityGroups :: !(Maybe [Text])
   , _risClientToken :: !(Maybe Text)
+  , _risElasticInferenceAccelerators :: !(Maybe [ElasticInferenceAccelerator])
   , _risInstanceMarketOptions :: !(Maybe InstanceMarketOptionsRequest)
+  , _risLicenseSpecifications :: !(Maybe [LicenseConfigurationRequest])
   , _risDisableAPITermination :: !(Maybe Bool)
   , _risKeyName :: !(Maybe Text)
   , _risNetworkInterfaces :: !(Maybe [InstanceNetworkInterfaceSpecification])
@@ -124,11 +126,13 @@ data RunInstances = RunInstances'
   , _risSubnetId :: !(Maybe Text)
   , _risKernelId :: !(Maybe Text)
   , _risInstanceType :: !(Maybe InstanceType)
+  , _risCapacityReservationSpecification :: !(Maybe CapacityReservationSpecification)
   , _risEBSOptimized :: !(Maybe Bool)
   , _risUserData :: !(Maybe Text)
   , _risMonitoring :: !(Maybe RunInstancesMonitoringEnabled)
   , _risTagSpecifications :: !(Maybe [TagSpecification])
   , _risIPv6AddressCount :: !(Maybe Int)
+  , _risHibernationOptions :: !(Maybe HibernationOptionsRequest)
   , _risIAMInstanceProfile :: !(Maybe IAMInstanceProfileSpecification)
   , _risElasticGpuSpecification :: !(Maybe [ElasticGpuSpecification])
   , _risImageId :: !(Maybe Text)
@@ -157,7 +161,11 @@ data RunInstances = RunInstances'
 --
 -- * 'risClientToken' - Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> . Constraints: Maximum 64 ASCII characters
 --
--- * 'risInstanceMarketOptions' - The market (purchasing) option for the instances.
+-- * 'risElasticInferenceAccelerators' - An elastic inference accelerator.
+--
+-- * 'risInstanceMarketOptions' - The market (purchasing) option for the instances. For 'RunInstances' , persistent Spot Instance requests are only supported when __InstanceInterruptionBehavior__ is set to either @hibernate@ or @stop@ .
+--
+-- * 'risLicenseSpecifications' - The license configurations.
 --
 -- * 'risDisableAPITermination' - If you set this parameter to @true@ , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute to @false@ after launch, use 'ModifyInstanceAttribute' . Alternatively, if you set @InstanceInitiatedShutdownBehavior@ to @terminate@ , you can terminate the instance by running the shutdown command from the instance. Default: @false@
 --
@@ -175,15 +183,19 @@ data RunInstances = RunInstances'
 --
 -- * 'risInstanceType' - The instance type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @m1.small@
 --
+-- * 'risCapacityReservationSpecification' - Information about the Capacity Reservation targeting option.
+--
 -- * 'risEBSOptimized' - Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: @false@
 --
 -- * 'risUserData' - The user data to make available to the instance. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html Running Commands on Your Linux Instance at Launch> (Linux) and <http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data Adding User Data> (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text.
 --
 -- * 'risMonitoring' - The monitoring for the instance.
 --
--- * 'risTagSpecifications' - The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are applied to all instances or volumes that are created during launch.
+-- * 'risTagSpecifications' - The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been created, see 'CreateTags' .
 --
 -- * 'risIPv6AddressCount' - [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same request. You can specify this option if you've specified a minimum number of instances to launch.
+--
+-- * 'risHibernationOptions' - Indicates whether an instance is enabled for hibernation. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html Hibernate Your Instance> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 -- * 'risIAMInstanceProfile' - The IAM instance profile.
 --
@@ -197,7 +209,7 @@ data RunInstances = RunInstances'
 --
 -- * 'risLaunchTemplate' - The launch template to use to launch the instances. Any parameters that you specify in 'RunInstances' override the same parameters in the launch template. You can specify either the name or ID of a launch template, but not both.
 --
--- * 'risCreditSpecification' - The credit option for CPU usage of the instance. Valid values are @standard@ and @unlimited@ . To change this attribute after launch, use 'ModifyInstanceCreditSpecification' . For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html T2 Instances> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @standard@
+-- * 'risCreditSpecification' - The credit option for CPU usage of the instance. Valid values are @standard@ and @unlimited@ . To change this attribute after launch, use 'ModifyInstanceCreditSpecification' . For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html Burstable Performance Instances> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @standard@ (T2 instances) or @unlimited@ (T3 instances)
 --
 -- * 'risBlockDeviceMappings' - One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value. This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume, it is not blank and its encryption status is used for the volume encryption status.
 --
@@ -220,7 +232,9 @@ runInstances pMaxCount_ pMinCount_ =
     , _risSecurityGroupIds = Nothing
     , _risSecurityGroups = Nothing
     , _risClientToken = Nothing
+    , _risElasticInferenceAccelerators = Nothing
     , _risInstanceMarketOptions = Nothing
+    , _risLicenseSpecifications = Nothing
     , _risDisableAPITermination = Nothing
     , _risKeyName = Nothing
     , _risNetworkInterfaces = Nothing
@@ -229,11 +243,13 @@ runInstances pMaxCount_ pMinCount_ =
     , _risSubnetId = Nothing
     , _risKernelId = Nothing
     , _risInstanceType = Nothing
+    , _risCapacityReservationSpecification = Nothing
     , _risEBSOptimized = Nothing
     , _risUserData = Nothing
     , _risMonitoring = Nothing
     , _risTagSpecifications = Nothing
     , _risIPv6AddressCount = Nothing
+    , _risHibernationOptions = Nothing
     , _risIAMInstanceProfile = Nothing
     , _risElasticGpuSpecification = Nothing
     , _risImageId = Nothing
@@ -266,9 +282,17 @@ risSecurityGroups = lens _risSecurityGroups (\ s a -> s{_risSecurityGroups = a})
 risClientToken :: Lens' RunInstances (Maybe Text)
 risClientToken = lens _risClientToken (\ s a -> s{_risClientToken = a})
 
--- | The market (purchasing) option for the instances.
+-- | An elastic inference accelerator.
+risElasticInferenceAccelerators :: Lens' RunInstances [ElasticInferenceAccelerator]
+risElasticInferenceAccelerators = lens _risElasticInferenceAccelerators (\ s a -> s{_risElasticInferenceAccelerators = a}) . _Default . _Coerce
+
+-- | The market (purchasing) option for the instances. For 'RunInstances' , persistent Spot Instance requests are only supported when __InstanceInterruptionBehavior__ is set to either @hibernate@ or @stop@ .
 risInstanceMarketOptions :: Lens' RunInstances (Maybe InstanceMarketOptionsRequest)
 risInstanceMarketOptions = lens _risInstanceMarketOptions (\ s a -> s{_risInstanceMarketOptions = a})
+
+-- | The license configurations.
+risLicenseSpecifications :: Lens' RunInstances [LicenseConfigurationRequest]
+risLicenseSpecifications = lens _risLicenseSpecifications (\ s a -> s{_risLicenseSpecifications = a}) . _Default . _Coerce
 
 -- | If you set this parameter to @true@ , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute to @false@ after launch, use 'ModifyInstanceAttribute' . Alternatively, if you set @InstanceInitiatedShutdownBehavior@ to @terminate@ , you can terminate the instance by running the shutdown command from the instance. Default: @false@
 risDisableAPITermination :: Lens' RunInstances (Maybe Bool)
@@ -302,6 +326,10 @@ risKernelId = lens _risKernelId (\ s a -> s{_risKernelId = a})
 risInstanceType :: Lens' RunInstances (Maybe InstanceType)
 risInstanceType = lens _risInstanceType (\ s a -> s{_risInstanceType = a})
 
+-- | Information about the Capacity Reservation targeting option.
+risCapacityReservationSpecification :: Lens' RunInstances (Maybe CapacityReservationSpecification)
+risCapacityReservationSpecification = lens _risCapacityReservationSpecification (\ s a -> s{_risCapacityReservationSpecification = a})
+
 -- | Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: @false@
 risEBSOptimized :: Lens' RunInstances (Maybe Bool)
 risEBSOptimized = lens _risEBSOptimized (\ s a -> s{_risEBSOptimized = a})
@@ -314,13 +342,17 @@ risUserData = lens _risUserData (\ s a -> s{_risUserData = a})
 risMonitoring :: Lens' RunInstances (Maybe RunInstancesMonitoringEnabled)
 risMonitoring = lens _risMonitoring (\ s a -> s{_risMonitoring = a})
 
--- | The tags to apply to the resources during launch. You can tag instances and volumes. The specified tags are applied to all instances or volumes that are created during launch.
+-- | The tags to apply to the resources during launch. You can only tag instances and volumes on launch. The specified tags are applied to all instances or volumes that are created during launch. To tag a resource after it has been created, see 'CreateTags' .
 risTagSpecifications :: Lens' RunInstances [TagSpecification]
 risTagSpecifications = lens _risTagSpecifications (\ s a -> s{_risTagSpecifications = a}) . _Default . _Coerce
 
 -- | [EC2-VPC] A number of IPv6 addresses to associate with the primary network interface. Amazon EC2 chooses the IPv6 addresses from the range of your subnet. You cannot specify this option and the option to assign specific IPv6 addresses in the same request. You can specify this option if you've specified a minimum number of instances to launch.
 risIPv6AddressCount :: Lens' RunInstances (Maybe Int)
 risIPv6AddressCount = lens _risIPv6AddressCount (\ s a -> s{_risIPv6AddressCount = a})
+
+-- | Indicates whether an instance is enabled for hibernation. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html Hibernate Your Instance> in the /Amazon Elastic Compute Cloud User Guide/ .
+risHibernationOptions :: Lens' RunInstances (Maybe HibernationOptionsRequest)
+risHibernationOptions = lens _risHibernationOptions (\ s a -> s{_risHibernationOptions = a})
 
 -- | The IAM instance profile.
 risIAMInstanceProfile :: Lens' RunInstances (Maybe IAMInstanceProfileSpecification)
@@ -346,7 +378,7 @@ risInstanceInitiatedShutdownBehavior = lens _risInstanceInitiatedShutdownBehavio
 risLaunchTemplate :: Lens' RunInstances (Maybe LaunchTemplateSpecification)
 risLaunchTemplate = lens _risLaunchTemplate (\ s a -> s{_risLaunchTemplate = a})
 
--- | The credit option for CPU usage of the instance. Valid values are @standard@ and @unlimited@ . To change this attribute after launch, use 'ModifyInstanceCreditSpecification' . For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html T2 Instances> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @standard@
+-- | The credit option for CPU usage of the instance. Valid values are @standard@ and @unlimited@ . To change this attribute after launch, use 'ModifyInstanceCreditSpecification' . For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html Burstable Performance Instances> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @standard@ (T2 instances) or @unlimited@ (T3 instances)
 risCreditSpecification :: Lens' RunInstances (Maybe CreditSpecificationRequest)
 risCreditSpecification = lens _risCreditSpecification (\ s a -> s{_risCreditSpecification = a})
 
@@ -401,7 +433,13 @@ instance ToQuery RunInstances where
                toQuery
                  (toQueryList "SecurityGroup" <$> _risSecurityGroups),
                "ClientToken" =: _risClientToken,
+               toQuery
+                 (toQueryList "ElasticInferenceAccelerator" <$>
+                    _risElasticInferenceAccelerators),
                "InstanceMarketOptions" =: _risInstanceMarketOptions,
+               toQuery
+                 (toQueryList "LicenseSpecification" <$>
+                    _risLicenseSpecifications),
                "DisableApiTermination" =: _risDisableAPITermination,
                "KeyName" =: _risKeyName,
                toQuery
@@ -412,6 +450,8 @@ instance ToQuery RunInstances where
                "SubnetId" =: _risSubnetId,
                "KernelId" =: _risKernelId,
                "InstanceType" =: _risInstanceType,
+               "CapacityReservationSpecification" =:
+                 _risCapacityReservationSpecification,
                "EbsOptimized" =: _risEBSOptimized,
                "UserData" =: _risUserData,
                "Monitoring" =: _risMonitoring,
@@ -419,6 +459,7 @@ instance ToQuery RunInstances where
                  (toQueryList "TagSpecification" <$>
                     _risTagSpecifications),
                "Ipv6AddressCount" =: _risIPv6AddressCount,
+               "HibernationOptions" =: _risHibernationOptions,
                "IamInstanceProfile" =: _risIAMInstanceProfile,
                toQuery
                  (toQueryList "ElasticGpuSpecification" <$>

@@ -21,6 +21,8 @@
 -- Deletes the specified EBS volume. The volume must be in the @available@ state (not attached to an instance).
 --
 --
+-- The volume can remain in the @deleting@ state for several minutes.
+--
 -- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html Deleting an Amazon EBS Volume> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.DeleteVolume

@@ -47,11 +47,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for AssociateDhcpOptions.
---
---
---
--- /See:/ 'associateDHCPOptions' smart constructor.
+-- | /See:/ 'associateDHCPOptions' smart constructor.
 data AssociateDHCPOptions = AssociateDHCPOptions'
   { _adoDryRun        :: !(Maybe Bool)
   , _adoDHCPOptionsId :: !Text

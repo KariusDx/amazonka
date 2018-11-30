@@ -49,11 +49,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ImportKeyPair.
---
---
---
--- /See:/ 'importKeyPair' smart constructor.
+-- | /See:/ 'importKeyPair' smart constructor.
 data ImportKeyPair = ImportKeyPair'
   { _ikpDryRun            :: !(Maybe Bool)
   , _ikpKeyName           :: !Text
@@ -122,11 +118,7 @@ instance ToQuery ImportKeyPair where
                "DryRun" =: _ikpDryRun, "KeyName" =: _ikpKeyName,
                "PublicKeyMaterial" =: _ikpPublicKeyMaterial]
 
--- | Contains the output of ImportKeyPair.
---
---
---
--- /See:/ 'importKeyPairResponse' smart constructor.
+-- | /See:/ 'importKeyPairResponse' smart constructor.
 data ImportKeyPairResponse = ImportKeyPairResponse'
   { _ikprsKeyFingerprint :: !(Maybe Text)
   , _ikprsKeyName        :: !(Maybe Text)

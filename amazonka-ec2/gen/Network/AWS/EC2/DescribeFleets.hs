@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the specified EC2 Fleet.
+-- Describes one or more of your EC2 Fleets.
 --
 --
 module Network.AWS.EC2.DescribeFleets
@@ -63,7 +63,7 @@ data DescribeFleets = DescribeFleets'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfsFilters' - One or more filters.
+-- * 'dfsFilters' - One or more filters.     * @activity-status@ - The progress of the EC2 Fleet ( @error@ | @pending-fulfillment@ | @pending-termination@ | @fulfilled@ ).     * @excess-capacity-termination-policy@ - Indicates whether to terminate running instances if the target capacity is decreased below the current EC2 Fleet size (@true@ | @false@ ).     * @fleet-state@ - The state of the EC2 Fleet (@submitted@ | @active@ | @deleted@ | @failed@ | @deleted-running@ | @deleted-terminating@ | @modifying@ ).     * @replace-unhealthy-instances@ - Indicates whether EC2 Fleet should replace unhealthy instances (@true@ | @false@ ).     * @type@ - The type of request (@instant@ | @request@ | @maintain@ ).
 --
 -- * 'dfsNextToken' - The token for the next set of results.
 --
@@ -84,7 +84,7 @@ describeFleets =
     }
 
 
--- | One or more filters.
+-- | One or more filters.     * @activity-status@ - The progress of the EC2 Fleet ( @error@ | @pending-fulfillment@ | @pending-termination@ | @fulfilled@ ).     * @excess-capacity-termination-policy@ - Indicates whether to terminate running instances if the target capacity is decreased below the current EC2 Fleet size (@true@ | @false@ ).     * @fleet-state@ - The state of the EC2 Fleet (@submitted@ | @active@ | @deleted@ | @failed@ | @deleted-running@ | @deleted-terminating@ | @modifying@ ).     * @replace-unhealthy-instances@ - Indicates whether EC2 Fleet should replace unhealthy instances (@true@ | @false@ ).     * @type@ - The type of request (@instant@ | @request@ | @maintain@ ).
 dfsFilters :: Lens' DescribeFleets [Filter]
 dfsFilters = lens _dfsFilters (\ s a -> s{_dfsFilters = a}) . _Default . _Coerce
 
@@ -151,7 +151,7 @@ data DescribeFleetsResponse = DescribeFleetsResponse'
 --
 -- * 'dfsrsNextToken' - The token for the next set of results.
 --
--- * 'dfsrsFleets' - The EC2 Fleets.
+-- * 'dfsrsFleets' - Information about the EC2 Fleets.
 --
 -- * 'dfsrsResponseStatus' - -- | The response status code.
 describeFleetsResponse
@@ -169,7 +169,7 @@ describeFleetsResponse pResponseStatus_ =
 dfsrsNextToken :: Lens' DescribeFleetsResponse (Maybe Text)
 dfsrsNextToken = lens _dfsrsNextToken (\ s a -> s{_dfsrsNextToken = a})
 
--- | The EC2 Fleets.
+-- | Information about the EC2 Fleets.
 dfsrsFleets :: Lens' DescribeFleetsResponse [FleetData]
 dfsrsFleets = lens _dfsrsFleets (\ s a -> s{_dfsrsFleets = a}) . _Default . _Coerce
 

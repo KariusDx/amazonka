@@ -55,11 +55,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for TerminateInstances.
---
---
---
--- /See:/ 'terminateInstances' smart constructor.
+-- | /See:/ 'terminateInstances' smart constructor.
 data TerminateInstances = TerminateInstances'
   { _tiDryRun      :: !(Maybe Bool)
   , _tiInstanceIds :: ![Text]
@@ -117,11 +113,7 @@ instance ToQuery TerminateInstances where
                "DryRun" =: _tiDryRun,
                toQueryList "InstanceId" _tiInstanceIds]
 
--- | Contains the output of TerminateInstances.
---
---
---
--- /See:/ 'terminateInstancesResponse' smart constructor.
+-- | /See:/ 'terminateInstancesResponse' smart constructor.
 data TerminateInstancesResponse = TerminateInstancesResponse'
   { _tirsTerminatingInstances :: !(Maybe [InstanceStateChange])
   , _tirsResponseStatus       :: !Int

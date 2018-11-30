@@ -21,7 +21,7 @@
 -- Describes one or more of your network ACLs.
 --
 --
--- For more information about network ACLs, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html Network ACLs> in the /Amazon Virtual Private Cloud User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html Network ACLs> in the /Amazon Virtual Private Cloud User Guide/ .
 --
 module Network.AWS.EC2.DescribeNetworkACLs
     (
@@ -48,11 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeNetworkAcls.
---
---
---
--- /See:/ 'describeNetworkACLs' smart constructor.
+-- | /See:/ 'describeNetworkACLs' smart constructor.
 data DescribeNetworkACLs = DescribeNetworkACLs'
   { _dnaclFilters       :: !(Maybe [Filter])
   , _dnaclNetworkACLIds :: !(Maybe [Text])
@@ -64,7 +60,7 @@ data DescribeNetworkACLs = DescribeNetworkACLs'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dnaclFilters' - One or more filters.     * @association.association-id@ - The ID of an association ID for the ACL.     * @association.network-acl-id@ - The ID of the network ACL involved in the association.     * @association.subnet-id@ - The ID of the subnet involved in the association.     * @default@ - Indicates whether the ACL is the default network ACL for the VPC.     * @entry.cidr@ - The IPv4 CIDR range specified in the entry.     * @entry.egress@ - Indicates whether the entry applies to egress traffic.     * @entry.icmp.code@ - The ICMP code specified in the entry, if any.     * @entry.icmp.type@ - The ICMP type specified in the entry, if any.     * @entry.ipv6-cidr@ - The IPv6 CIDR range specified in the entry.     * @entry.port-range.from@ - The start of the port range specified in the entry.      * @entry.port-range.to@ - The end of the port range specified in the entry.      * @entry.protocol@ - The protocol specified in the entry (@tcp@ | @udp@ | @icmp@ or a protocol number).     * @entry.rule-action@ - Allows or denies the matching traffic (@allow@ | @deny@ ).     * @entry.rule-number@ - The number of an entry (in other words, rule) in the ACL's set of entries.     * @network-acl-id@ - The ID of the network ACL.     * @tag@ :/key/ =/value/ - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify @tag:Purpose@ for the filter name and @X@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. This filter is independent of the @tag-value@ filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the @tag@ :/key/ =/value/ filter.     * @tag-value@ - The value of a tag assigned to the resource. This filter is independent of the @tag-key@ filter.     * @vpc-id@ - The ID of the VPC for the network ACL.
+-- * 'dnaclFilters' - One or more filters.     * @association.association-id@ - The ID of an association ID for the ACL.     * @association.network-acl-id@ - The ID of the network ACL involved in the association.     * @association.subnet-id@ - The ID of the subnet involved in the association.     * @default@ - Indicates whether the ACL is the default network ACL for the VPC.     * @entry.cidr@ - The IPv4 CIDR range specified in the entry.     * @entry.icmp.code@ - The ICMP code specified in the entry, if any.     * @entry.icmp.type@ - The ICMP type specified in the entry, if any.     * @entry.ipv6-cidr@ - The IPv6 CIDR range specified in the entry.     * @entry.port-range.from@ - The start of the port range specified in the entry.      * @entry.port-range.to@ - The end of the port range specified in the entry.      * @entry.protocol@ - The protocol specified in the entry (@tcp@ | @udp@ | @icmp@ or a protocol number).     * @entry.rule-action@ - Allows or denies the matching traffic (@allow@ | @deny@ ).     * @entry.rule-number@ - The number of an entry (in other words, rule) in the set of ACL entries.     * @network-acl-id@ - The ID of the network ACL.     * @owner-id@ - The ID of the AWS account that owns the network ACL.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.     * @vpc-id@ - The ID of the VPC for the network ACL.
 --
 -- * 'dnaclNetworkACLIds' - One or more network ACL IDs. Default: Describes all your network ACLs.
 --
@@ -79,7 +75,7 @@ describeNetworkACLs =
     }
 
 
--- | One or more filters.     * @association.association-id@ - The ID of an association ID for the ACL.     * @association.network-acl-id@ - The ID of the network ACL involved in the association.     * @association.subnet-id@ - The ID of the subnet involved in the association.     * @default@ - Indicates whether the ACL is the default network ACL for the VPC.     * @entry.cidr@ - The IPv4 CIDR range specified in the entry.     * @entry.egress@ - Indicates whether the entry applies to egress traffic.     * @entry.icmp.code@ - The ICMP code specified in the entry, if any.     * @entry.icmp.type@ - The ICMP type specified in the entry, if any.     * @entry.ipv6-cidr@ - The IPv6 CIDR range specified in the entry.     * @entry.port-range.from@ - The start of the port range specified in the entry.      * @entry.port-range.to@ - The end of the port range specified in the entry.      * @entry.protocol@ - The protocol specified in the entry (@tcp@ | @udp@ | @icmp@ or a protocol number).     * @entry.rule-action@ - Allows or denies the matching traffic (@allow@ | @deny@ ).     * @entry.rule-number@ - The number of an entry (in other words, rule) in the ACL's set of entries.     * @network-acl-id@ - The ID of the network ACL.     * @tag@ :/key/ =/value/ - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify @tag:Purpose@ for the filter name and @X@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. This filter is independent of the @tag-value@ filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the @tag@ :/key/ =/value/ filter.     * @tag-value@ - The value of a tag assigned to the resource. This filter is independent of the @tag-key@ filter.     * @vpc-id@ - The ID of the VPC for the network ACL.
+-- | One or more filters.     * @association.association-id@ - The ID of an association ID for the ACL.     * @association.network-acl-id@ - The ID of the network ACL involved in the association.     * @association.subnet-id@ - The ID of the subnet involved in the association.     * @default@ - Indicates whether the ACL is the default network ACL for the VPC.     * @entry.cidr@ - The IPv4 CIDR range specified in the entry.     * @entry.icmp.code@ - The ICMP code specified in the entry, if any.     * @entry.icmp.type@ - The ICMP type specified in the entry, if any.     * @entry.ipv6-cidr@ - The IPv6 CIDR range specified in the entry.     * @entry.port-range.from@ - The start of the port range specified in the entry.      * @entry.port-range.to@ - The end of the port range specified in the entry.      * @entry.protocol@ - The protocol specified in the entry (@tcp@ | @udp@ | @icmp@ or a protocol number).     * @entry.rule-action@ - Allows or denies the matching traffic (@allow@ | @deny@ ).     * @entry.rule-number@ - The number of an entry (in other words, rule) in the set of ACL entries.     * @network-acl-id@ - The ID of the network ACL.     * @owner-id@ - The ID of the AWS account that owns the network ACL.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.     * @vpc-id@ - The ID of the VPC for the network ACL.
 dnaclFilters :: Lens' DescribeNetworkACLs [Filter]
 dnaclFilters = lens _dnaclFilters (\ s a -> s{_dnaclFilters = a}) . _Default . _Coerce
 
@@ -123,11 +119,7 @@ instance ToQuery DescribeNetworkACLs where
                  (toQueryList "NetworkAclId" <$> _dnaclNetworkACLIds),
                "DryRun" =: _dnaclDryRun]
 
--- | Contains the output of DescribeNetworkAcls.
---
---
---
--- /See:/ 'describeNetworkACLsResponse' smart constructor.
+-- | /See:/ 'describeNetworkACLsResponse' smart constructor.
 data DescribeNetworkACLsResponse = DescribeNetworkACLsResponse'
   { _dnarsNetworkACLs    :: !(Maybe [NetworkACL])
   , _dnarsResponseStatus :: !Int

@@ -48,11 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ReplaceRouteTableAssociation.
---
---
---
--- /See:/ 'replaceRouteTableAssociation' smart constructor.
+-- | /See:/ 'replaceRouteTableAssociation' smart constructor.
 data ReplaceRouteTableAssociation = ReplaceRouteTableAssociation'
   { _rrtaDryRun        :: !(Maybe Bool)
   , _rrtaAssociationId :: !Text
@@ -124,11 +120,7 @@ instance ToQuery ReplaceRouteTableAssociation where
                "AssociationId" =: _rrtaAssociationId,
                "RouteTableId" =: _rrtaRouteTableId]
 
--- | Contains the output of ReplaceRouteTableAssociation.
---
---
---
--- /See:/ 'replaceRouteTableAssociationResponse' smart constructor.
+-- | /See:/ 'replaceRouteTableAssociationResponse' smart constructor.
 data ReplaceRouteTableAssociationResponse = ReplaceRouteTableAssociationResponse'
   { _rrtarsNewAssociationId :: !(Maybe Text)
   , _rrtarsResponseStatus   :: !Int

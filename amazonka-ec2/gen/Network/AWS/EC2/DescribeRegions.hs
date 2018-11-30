@@ -48,11 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeRegions.
---
---
---
--- /See:/ 'describeRegions' smart constructor.
+-- | /See:/ 'describeRegions' smart constructor.
 data DescribeRegions = DescribeRegions'
   { _drsRegionNames :: !(Maybe [Text])
   , _drsFilters     :: !(Maybe [Filter])
@@ -119,11 +115,7 @@ instance ToQuery DescribeRegions where
                toQuery (toQueryList "Filter" <$> _drsFilters),
                "DryRun" =: _drsDryRun]
 
--- | Contains the output of DescribeRegions.
---
---
---
--- /See:/ 'describeRegionsResponse' smart constructor.
+-- | /See:/ 'describeRegionsResponse' smart constructor.
 data DescribeRegionsResponse = DescribeRegionsResponse'
   { _drrsRegions        :: !(Maybe [RegionInfo])
   , _drrsResponseStatus :: !Int

@@ -46,11 +46,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for RebootInstances.
---
---
---
--- /See:/ 'rebootInstances' smart constructor.
+-- | /See:/ 'rebootInstances' smart constructor.
 data RebootInstances = RebootInstances'
   { _rebDryRun      :: !(Maybe Bool)
   , _rebInstanceIds :: ![Text]

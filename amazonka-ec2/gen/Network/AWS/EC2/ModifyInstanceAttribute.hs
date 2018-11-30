@@ -60,11 +60,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ModifyInstanceAttribute.
---
---
---
--- /See:/ 'modifyInstanceAttribute' smart constructor.
+-- | /See:/ 'modifyInstanceAttribute' smart constructor.
 data ModifyInstanceAttribute = ModifyInstanceAttribute'
   { _mGroups :: !(Maybe [Text])
   , _mAttribute :: !(Maybe InstanceAttributeName)

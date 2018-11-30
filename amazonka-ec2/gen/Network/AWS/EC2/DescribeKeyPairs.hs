@@ -48,11 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeKeyPairs.
---
---
---
--- /See:/ 'describeKeyPairs' smart constructor.
+-- | /See:/ 'describeKeyPairs' smart constructor.
 data DescribeKeyPairs = DescribeKeyPairs'
   { _dkpsFilters  :: !(Maybe [Filter])
   , _dkpsKeyNames :: !(Maybe [Text])
@@ -118,11 +114,7 @@ instance ToQuery DescribeKeyPairs where
                toQuery (toQueryList "KeyName" <$> _dkpsKeyNames),
                "DryRun" =: _dkpsDryRun]
 
--- | Contains the output of DescribeKeyPairs.
---
---
---
--- /See:/ 'describeKeyPairsResponse' smart constructor.
+-- | /See:/ 'describeKeyPairsResponse' smart constructor.
 data DescribeKeyPairsResponse = DescribeKeyPairsResponse'
   { _dkprsKeyPairs       :: !(Maybe [KeyPairInfo])
   , _dkprsResponseStatus :: !Int

@@ -48,11 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters of ModifyIdFormat.
---
---
---
--- /See:/ 'modifyIdFormat' smart constructor.
+-- | /See:/ 'modifyIdFormat' smart constructor.
 data ModifyIdFormat = ModifyIdFormat'
   { _mifResource   :: !Text
   , _mifUseLongIds :: !Bool

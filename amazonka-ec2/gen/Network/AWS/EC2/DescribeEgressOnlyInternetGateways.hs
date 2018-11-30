@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes one or more of your egress-only Internet gateways.
+-- Describes one or more of your egress-only internet gateways.
 --
 --
 module Network.AWS.EC2.DescribeEgressOnlyInternetGateways
@@ -61,13 +61,13 @@ data DescribeEgressOnlyInternetGateways = DescribeEgressOnlyInternetGateways'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'deoigEgressOnlyInternetGatewayIds' - One or more egress-only Internet gateway IDs.
+-- * 'deoigEgressOnlyInternetGatewayIds' - One or more egress-only internet gateway IDs.
 --
 -- * 'deoigNextToken' - The token to retrieve the next page of results.
 --
 -- * 'deoigDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'deoigMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned @NextToken@ value. This value can be between 5 and 1000; if @MaxResults@ is given a value larger than 1000, only 1000 results are returned.
+-- * 'deoigMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned @NextToken@ value. This value can be between 5 and 1000. If @MaxResults@ is given a value larger than 1000, only 1000 results are returned.
 describeEgressOnlyInternetGateways
     :: DescribeEgressOnlyInternetGateways
 describeEgressOnlyInternetGateways =
@@ -79,7 +79,7 @@ describeEgressOnlyInternetGateways =
     }
 
 
--- | One or more egress-only Internet gateway IDs.
+-- | One or more egress-only internet gateway IDs.
 deoigEgressOnlyInternetGatewayIds :: Lens' DescribeEgressOnlyInternetGateways [Text]
 deoigEgressOnlyInternetGatewayIds = lens _deoigEgressOnlyInternetGatewayIds (\ s a -> s{_deoigEgressOnlyInternetGatewayIds = a}) . _Default . _Coerce
 
@@ -91,7 +91,7 @@ deoigNextToken = lens _deoigNextToken (\ s a -> s{_deoigNextToken = a})
 deoigDryRun :: Lens' DescribeEgressOnlyInternetGateways (Maybe Bool)
 deoigDryRun = lens _deoigDryRun (\ s a -> s{_deoigDryRun = a})
 
--- | The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned @NextToken@ value. This value can be between 5 and 1000; if @MaxResults@ is given a value larger than 1000, only 1000 results are returned.
+-- | The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned @NextToken@ value. This value can be between 5 and 1000. If @MaxResults@ is given a value larger than 1000, only 1000 results are returned.
 deoigMaxResults :: Lens' DescribeEgressOnlyInternetGateways (Maybe Int)
 deoigMaxResults = lens _deoigMaxResults (\ s a -> s{_deoigMaxResults = a})
 
@@ -150,7 +150,7 @@ data DescribeEgressOnlyInternetGatewaysResponse = DescribeEgressOnlyInternetGate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'deoigrsEgressOnlyInternetGateways' - Information about the egress-only Internet gateways.
+-- * 'deoigrsEgressOnlyInternetGateways' - Information about the egress-only internet gateways.
 --
 -- * 'deoigrsNextToken' - The token to use to retrieve the next page of results.
 --
@@ -166,7 +166,7 @@ describeEgressOnlyInternetGatewaysResponse pResponseStatus_ =
     }
 
 
--- | Information about the egress-only Internet gateways.
+-- | Information about the egress-only internet gateways.
 deoigrsEgressOnlyInternetGateways :: Lens' DescribeEgressOnlyInternetGatewaysResponse [EgressOnlyInternetGateway]
 deoigrsEgressOnlyInternetGateways = lens _deoigrsEgressOnlyInternetGateways (\ s a -> s{_deoigrsEgressOnlyInternetGateways = a}) . _Default . _Coerce
 

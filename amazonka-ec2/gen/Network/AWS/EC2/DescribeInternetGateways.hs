@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes one or more of your Internet gateways.
+-- Describes one or more of your internet gateways.
 --
 --
 module Network.AWS.EC2.DescribeInternetGateways
@@ -46,11 +46,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeInternetGateways.
---
---
---
--- /See:/ 'describeInternetGateways' smart constructor.
+-- | /See:/ 'describeInternetGateways' smart constructor.
 data DescribeInternetGateways = DescribeInternetGateways'
   { _dFilters            :: !(Maybe [Filter])
   , _dInternetGatewayIds :: !(Maybe [Text])
@@ -62,9 +58,9 @@ data DescribeInternetGateways = DescribeInternetGateways'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dFilters' - One or more filters.     * @attachment.state@ - The current state of the attachment between the gateway and the VPC (@available@ ). Present only if a VPC is attached.     * @attachment.vpc-id@ - The ID of an attached VPC.     * @internet-gateway-id@ - The ID of the Internet gateway.     * @tag@ :/key/ =/value/ - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify @tag:Purpose@ for the filter name and @X@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. This filter is independent of the @tag-value@ filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the @tag@ :/key/ =/value/ filter.     * @tag-value@ - The value of a tag assigned to the resource. This filter is independent of the @tag-key@ filter.
+-- * 'dFilters' - One or more filters.     * @attachment.state@ - The current state of the attachment between the gateway and the VPC (@available@ ). Present only if a VPC is attached.     * @attachment.vpc-id@ - The ID of an attached VPC.     * @internet-gateway-id@ - The ID of the Internet gateway.     * @owner-id@ - The ID of the AWS account that owns the internet gateway.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 --
--- * 'dInternetGatewayIds' - One or more Internet gateway IDs. Default: Describes all your Internet gateways.
+-- * 'dInternetGatewayIds' - One or more internet gateway IDs. Default: Describes all your internet gateways.
 --
 -- * 'dDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeInternetGateways
@@ -74,11 +70,11 @@ describeInternetGateways =
     {_dFilters = Nothing, _dInternetGatewayIds = Nothing, _dDryRun = Nothing}
 
 
--- | One or more filters.     * @attachment.state@ - The current state of the attachment between the gateway and the VPC (@available@ ). Present only if a VPC is attached.     * @attachment.vpc-id@ - The ID of an attached VPC.     * @internet-gateway-id@ - The ID of the Internet gateway.     * @tag@ :/key/ =/value/ - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify @tag:Purpose@ for the filter name and @X@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. This filter is independent of the @tag-value@ filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the @tag@ :/key/ =/value/ filter.     * @tag-value@ - The value of a tag assigned to the resource. This filter is independent of the @tag-key@ filter.
+-- | One or more filters.     * @attachment.state@ - The current state of the attachment between the gateway and the VPC (@available@ ). Present only if a VPC is attached.     * @attachment.vpc-id@ - The ID of an attached VPC.     * @internet-gateway-id@ - The ID of the Internet gateway.     * @owner-id@ - The ID of the AWS account that owns the internet gateway.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 dFilters :: Lens' DescribeInternetGateways [Filter]
 dFilters = lens _dFilters (\ s a -> s{_dFilters = a}) . _Default . _Coerce
 
--- | One or more Internet gateway IDs. Default: Describes all your Internet gateways.
+-- | One or more internet gateway IDs. Default: Describes all your internet gateways.
 dInternetGatewayIds :: Lens' DescribeInternetGateways [Text]
 dInternetGatewayIds = lens _dInternetGatewayIds (\ s a -> s{_dInternetGatewayIds = a}) . _Default . _Coerce
 
@@ -120,11 +116,7 @@ instance ToQuery DescribeInternetGateways where
                     _dInternetGatewayIds),
                "DryRun" =: _dDryRun]
 
--- | Contains the output of DescribeInternetGateways.
---
---
---
--- /See:/ 'describeInternetGatewaysResponse' smart constructor.
+-- | /See:/ 'describeInternetGatewaysResponse' smart constructor.
 data DescribeInternetGatewaysResponse = DescribeInternetGatewaysResponse'
   { _digrsInternetGateways :: !(Maybe [InternetGateway])
   , _digrsResponseStatus   :: !Int
@@ -135,7 +127,7 @@ data DescribeInternetGatewaysResponse = DescribeInternetGatewaysResponse'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'digrsInternetGateways' - Information about one or more Internet gateways.
+-- * 'digrsInternetGateways' - Information about one or more internet gateways.
 --
 -- * 'digrsResponseStatus' - -- | The response status code.
 describeInternetGatewaysResponse
@@ -146,7 +138,7 @@ describeInternetGatewaysResponse pResponseStatus_ =
     {_digrsInternetGateways = Nothing, _digrsResponseStatus = pResponseStatus_}
 
 
--- | Information about one or more Internet gateways.
+-- | Information about one or more internet gateways.
 digrsInternetGateways :: Lens' DescribeInternetGatewaysResponse [InternetGateway]
 digrsInternetGateways = lens _digrsInternetGateways (\ s a -> s{_digrsInternetGateways = a}) . _Default . _Coerce
 

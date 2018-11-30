@@ -63,7 +63,7 @@ data DescribeStaleSecurityGroups = DescribeStaleSecurityGroups'
 --
 -- * 'dssgNextToken' - The token for the next set of items to return. (You received this token from a prior call.)
 --
--- * 'dssgDryRun' - Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+-- * 'dssgDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'dssgMaxResults' - The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.
 --
@@ -84,7 +84,7 @@ describeStaleSecurityGroups pVPCId_ =
 dssgNextToken :: Lens' DescribeStaleSecurityGroups (Maybe Text)
 dssgNextToken = lens _dssgNextToken (\ s a -> s{_dssgNextToken = a})
 
--- | Checks whether you have the required permissions for the operation, without actually making the request, and provides an error response. If you have the required permissions, the error response is DryRunOperation. Otherwise, it is UnauthorizedOperation.
+-- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dssgDryRun :: Lens' DescribeStaleSecurityGroups (Maybe Bool)
 dssgDryRun = lens _dssgDryRun (\ s a -> s{_dssgDryRun = a})
 

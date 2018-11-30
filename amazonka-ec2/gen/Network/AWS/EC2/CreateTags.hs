@@ -45,11 +45,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for CreateTags.
---
---
---
--- /See:/ 'createTags' smart constructor.
+-- | /See:/ 'createTags' smart constructor.
 data CreateTags = CreateTags'
   { _cDryRun    :: !(Maybe Bool)
   , _cResources :: ![Text]
@@ -63,7 +59,7 @@ data CreateTags = CreateTags'
 --
 -- * 'cDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'cResources' - The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
+-- * 'cResources' - The IDs of one or more resources, separated by spaces.
 --
 -- * 'cTags' - One or more tags. The @value@ parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
 createTags
@@ -76,7 +72,7 @@ createTags =
 cDryRun :: Lens' CreateTags (Maybe Bool)
 cDryRun = lens _cDryRun (\ s a -> s{_cDryRun = a})
 
--- | The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
+-- | The IDs of one or more resources, separated by spaces.
 cResources :: Lens' CreateTags [Text]
 cResources = lens _cResources (\ s a -> s{_cResources = a}) . _Coerce
 

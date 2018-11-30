@@ -42,11 +42,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DeletePlacementGroup.
---
---
---
--- /See:/ 'deletePlacementGroup' smart constructor.
+-- | /See:/ 'deletePlacementGroup' smart constructor.
 data DeletePlacementGroup = DeletePlacementGroup'
   { _dpgDryRun    :: !(Maybe Bool)
   , _dpgGroupName :: !Text

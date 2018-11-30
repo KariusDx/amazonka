@@ -47,11 +47,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for CreatePlacementGroup.
---
---
---
--- /See:/ 'createPlacementGroup' smart constructor.
+-- | /See:/ 'createPlacementGroup' smart constructor.
 data CreatePlacementGroup = CreatePlacementGroup'
   { _cpgDryRun    :: !(Maybe Bool)
   , _cpgGroupName :: !Text

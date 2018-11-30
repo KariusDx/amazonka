@@ -49,11 +49,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeMovingAddresses.
---
---
---
--- /See:/ 'describeMovingAddresses' smart constructor.
+-- | /See:/ 'describeMovingAddresses' smart constructor.
 data DescribeMovingAddresses = DescribeMovingAddresses'
   { _dmaFilters    :: !(Maybe [Filter])
   , _dmaPublicIPs  :: !(Maybe [Text])
@@ -71,7 +67,7 @@ data DescribeMovingAddresses = DescribeMovingAddresses'
 --
 -- * 'dmaPublicIPs' - One or more Elastic IP addresses.
 --
--- * 'dmaNextToken' - The token to use to retrieve the next page of results.
+-- * 'dmaNextToken' - The token for the next page of results.
 --
 -- * 'dmaDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
@@ -96,7 +92,7 @@ dmaFilters = lens _dmaFilters (\ s a -> s{_dmaFilters = a}) . _Default . _Coerce
 dmaPublicIPs :: Lens' DescribeMovingAddresses [Text]
 dmaPublicIPs = lens _dmaPublicIPs (\ s a -> s{_dmaPublicIPs = a}) . _Default . _Coerce
 
--- | The token to use to retrieve the next page of results.
+-- | The token for the next page of results.
 dmaNextToken :: Lens' DescribeMovingAddresses (Maybe Text)
 dmaNextToken = lens _dmaNextToken (\ s a -> s{_dmaNextToken = a})
 
@@ -142,11 +138,7 @@ instance ToQuery DescribeMovingAddresses where
                "NextToken" =: _dmaNextToken, "DryRun" =: _dmaDryRun,
                "MaxResults" =: _dmaMaxResults]
 
--- | Contains the output of DescribeMovingAddresses.
---
---
---
--- /See:/ 'describeMovingAddressesResponse' smart constructor.
+-- | /See:/ 'describeMovingAddressesResponse' smart constructor.
 data DescribeMovingAddressesResponse = DescribeMovingAddressesResponse'
   { _dmarsMovingAddressStatuses :: !(Maybe [MovingAddressStatus])
   , _dmarsNextToken             :: !(Maybe Text)

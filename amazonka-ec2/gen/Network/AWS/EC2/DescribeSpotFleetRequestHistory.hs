@@ -21,7 +21,7 @@
 -- Describes the events for the specified Spot Fleet request during the specified time.
 --
 --
--- Spot Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event.
+-- Spot Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by the last evaluated time and not miss a recorded event. Spot Fleet events are available for 48 hours.
 --
 module Network.AWS.EC2.DescribeSpotFleetRequestHistory
     (

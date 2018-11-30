@@ -49,11 +49,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeIdentityIdFormat.
---
---
---
--- /See:/ 'describeIdentityIdFormat' smart constructor.
+-- | /See:/ 'describeIdentityIdFormat' smart constructor.
 data DescribeIdentityIdFormat = DescribeIdentityIdFormat'
   { _diifResource     :: !(Maybe Text)
   , _diifPrincipalARN :: !Text
@@ -114,11 +110,7 @@ instance ToQuery DescribeIdentityIdFormat where
                "Resource" =: _diifResource,
                "PrincipalArn" =: _diifPrincipalARN]
 
--- | Contains the output of DescribeIdentityIdFormat.
---
---
---
--- /See:/ 'describeIdentityIdFormatResponse' smart constructor.
+-- | /See:/ 'describeIdentityIdFormatResponse' smart constructor.
 data DescribeIdentityIdFormatResponse = DescribeIdentityIdFormatResponse'
   { _diifrsStatuses       :: !(Maybe [IdFormat])
   , _diifrsResponseStatus :: !Int

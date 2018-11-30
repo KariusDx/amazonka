@@ -44,11 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DisassociateRouteTable.
---
---
---
--- /See:/ 'disassociateRouteTable' smart constructor.
+-- | /See:/ 'disassociateRouteTable' smart constructor.
 data DisassociateRouteTable = DisassociateRouteTable'
   { _drtDryRun        :: !(Maybe Bool)
   , _drtAssociationId :: !Text

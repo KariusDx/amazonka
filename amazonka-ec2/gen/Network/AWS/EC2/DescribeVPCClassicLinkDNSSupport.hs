@@ -47,11 +47,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribeVpcClassicLinkDnsSupport.
---
---
---
--- /See:/ 'describeVPCClassicLinkDNSSupport' smart constructor.
+-- | /See:/ 'describeVPCClassicLinkDNSSupport' smart constructor.
 data DescribeVPCClassicLinkDNSSupport = DescribeVPCClassicLinkDNSSupport'
   { _dvcldsNextToken  :: !(Maybe Text)
   , _dvcldsVPCIds     :: !(Maybe [Text])
@@ -129,11 +125,7 @@ instance ToQuery DescribeVPCClassicLinkDNSSupport
                toQuery (toQueryList "VpcIds" <$> _dvcldsVPCIds),
                "MaxResults" =: _dvcldsMaxResults]
 
--- | Contains the output of DescribeVpcClassicLinkDnsSupport.
---
---
---
--- /See:/ 'describeVPCClassicLinkDNSSupportResponse' smart constructor.
+-- | /See:/ 'describeVPCClassicLinkDNSSupportResponse' smart constructor.
 data DescribeVPCClassicLinkDNSSupportResponse = DescribeVPCClassicLinkDNSSupportResponse'
   { _dvpccldnssrsVPCs           :: !(Maybe [ClassicLinkDNSSupport])
   , _dvpccldnssrsNextToken      :: !(Maybe Text)

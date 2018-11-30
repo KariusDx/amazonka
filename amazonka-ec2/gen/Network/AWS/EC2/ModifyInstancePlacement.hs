@@ -62,11 +62,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for ModifyInstancePlacement.
---
---
---
--- /See:/ 'modifyInstancePlacement' smart constructor.
+-- | /See:/ 'modifyInstancePlacement' smart constructor.
 data ModifyInstancePlacement = ModifyInstancePlacement'
   { _mipAffinity   :: !(Maybe Affinity)
   , _mipHostId     :: !(Maybe Text)
@@ -153,11 +149,7 @@ instance ToQuery ModifyInstancePlacement where
                "GroupName" =: _mipGroupName,
                "InstanceId" =: _mipInstanceId]
 
--- | Contains the output of ModifyInstancePlacement.
---
---
---
--- /See:/ 'modifyInstancePlacementResponse' smart constructor.
+-- | /See:/ 'modifyInstancePlacementResponse' smart constructor.
 data ModifyInstancePlacementResponse = ModifyInstancePlacementResponse'
   { _miprsReturn         :: !(Maybe Bool)
   , _miprsResponseStatus :: !Int

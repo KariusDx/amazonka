@@ -87,7 +87,7 @@ data DescribeLaunchTemplateVersions = DescribeLaunchTemplateVersions'
 --
 -- * 'dltvsDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'dltvsMaxResults' - The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value. This value can be between 5 and 1000.
+-- * 'dltvsMaxResults' - The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value. This value can be between 1 and 200.
 describeLaunchTemplateVersions
     :: DescribeLaunchTemplateVersions
 describeLaunchTemplateVersions =
@@ -136,7 +136,7 @@ dltvsNextToken = lens _dltvsNextToken (\ s a -> s{_dltvsNextToken = a})
 dltvsDryRun :: Lens' DescribeLaunchTemplateVersions (Maybe Bool)
 dltvsDryRun = lens _dltvsDryRun (\ s a -> s{_dltvsDryRun = a})
 
--- | The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value. This value can be between 5 and 1000.
+-- | The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value. This value can be between 1 and 200.
 dltvsMaxResults :: Lens' DescribeLaunchTemplateVersions (Maybe Int)
 dltvsMaxResults = lens _dltvsMaxResults (\ s a -> s{_dltvsMaxResults = a})
 

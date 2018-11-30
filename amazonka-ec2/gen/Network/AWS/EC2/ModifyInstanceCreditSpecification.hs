@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modifies the credit option for CPU usage on a running or stopped T2 instance. The credit options are @standard@ and @unlimited@ .
+-- Modifies the credit option for CPU usage on a running or stopped T2 or T3 instance. The credit options are @standard@ and @unlimited@ .
 --
 --
--- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/t2-instances.html T2 Instances> in the /Amazon Elastic Compute Cloud User Guide/ .
+-- For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html Burstable Performance Instances> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.ModifyInstanceCreditSpecification
     (

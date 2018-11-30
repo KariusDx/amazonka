@@ -37,8 +37,6 @@
 --
 --
 --
--- For an overview of the AWS Marketplace, see <https://aws.amazon.com/marketplace/help/200900000 Introducing AWS Marketplace> .
---
 -- For more information about EBS volumes, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html Attaching Amazon EBS Volumes> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
 module Network.AWS.EC2.AttachVolume

@@ -53,11 +53,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for AuthorizeSecurityGroupEgress.
---
---
---
--- /See:/ 'authorizeSecurityGroupEgress' smart constructor.
+-- | /See:/ 'authorizeSecurityGroupEgress' smart constructor.
 data AuthorizeSecurityGroupEgress = AuthorizeSecurityGroupEgress'
   { _asgeFromPort                   :: !(Maybe Int)
   , _asgeIPPermissions              :: !(Maybe [IPPermission])

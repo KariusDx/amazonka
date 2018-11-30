@@ -51,11 +51,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters of ModifyIdentityIdFormat.
---
---
---
--- /See:/ 'modifyIdentityIdFormat' smart constructor.
+-- | /See:/ 'modifyIdentityIdFormat' smart constructor.
 data ModifyIdentityIdFormat = ModifyIdentityIdFormat'
   { _miifPrincipalARN :: !Text
   , _miifResource     :: !Text

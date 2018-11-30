@@ -46,11 +46,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DescribePlacementGroups.
---
---
---
--- /See:/ 'describePlacementGroups' smart constructor.
+-- | /See:/ 'describePlacementGroups' smart constructor.
 data DescribePlacementGroups = DescribePlacementGroups'
   { _dpgsFilters    :: !(Maybe [Filter])
   , _dpgsGroupNames :: !(Maybe [Text])
@@ -119,11 +115,7 @@ instance ToQuery DescribePlacementGroups where
                  (toQueryList "GroupName" <$> _dpgsGroupNames),
                "DryRun" =: _dpgsDryRun]
 
--- | Contains the output of DescribePlacementGroups.
---
---
---
--- /See:/ 'describePlacementGroupsResponse' smart constructor.
+-- | /See:/ 'describePlacementGroupsResponse' smart constructor.
 data DescribePlacementGroupsResponse = DescribePlacementGroupsResponse'
   { _dpgrsPlacementGroups :: !(Maybe [PlacementGroup])
   , _dpgrsResponseStatus  :: !Int

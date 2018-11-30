@@ -47,11 +47,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the parameters for DisassociateAddress.
---
---
---
--- /See:/ 'disassociateAddress' smart constructor.
+-- | /See:/ 'disassociateAddress' smart constructor.
 data DisassociateAddress = DisassociateAddress'
   { _dasAssociationId :: !(Maybe Text)
   , _dasPublicIP      :: !(Maybe Text)
